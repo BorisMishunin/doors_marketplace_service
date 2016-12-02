@@ -22,17 +22,17 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 from rest_framework import routers
+from doors_marketplace_service.views import ActionsList
 
 
 admin.autodiscover()
 router = routers.DefaultRouter()
+router.register(r'/actions', ActionsList)
 
 
 urlpatterns = [
     url(r'^resources', include(router.urls)),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'social/', include('social.apps.django_app.urls', namespace='social')),
-
 ]
 
 #urlpatterns = format_suffix_patterns(urlpatterns)
